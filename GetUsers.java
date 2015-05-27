@@ -18,26 +18,28 @@ public class GetUsers{
     System.out.println("\nIngrese el nombre completo y correo electronico");
     char dts;
     String datos = new String("");
-    try{while((dts=(char)System.in.read()) <= num_usr)
-      datos = datos + dts;
-    }catch(java.io.IOException ioex){
+    for(int aux=1;aux<=num_usr;aux++){
+      try{while((dts=(char)System.in.read()) != '\n')
+        datos = datos + dts;
+      }catch(java.io.IOException ioex){
+      }
     }
     return datos;
   }
 
   public static void main(String argv[]){
 
-  GetUsers usuarios = new GetUsers();
+    GetUsers usuarios = new GetUsers();
 
     System.out.println("Numero de Usuarios a ingresar?");
-    char obtion;
-    String obtn = new String("");
-    try{ while((obtion=(char)System.in.read()) !='\n')
-      obtn = obtn + obtion;
+    int obtion=0;
+    try{
+      obtion=System.in.read();
+      obtion = Character.getNumericValue(obtion);
     }catch(java.io.IOException ioex){
     }
-
-        usuarios.GetDat((int)obtn);
+    System.out.println(obtion);
+    usuarios.GetDat(obtion);
 
   }
 
