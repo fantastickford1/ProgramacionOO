@@ -2,47 +2,56 @@ import java.io.InputStream;
 
 public class GetUsers{
   String datos;
-  String nombre;
-  String username;
-  String dominio;
+  String[] nombre;
+  String[] username;
+  int usr;
 
-  /*String GetName(String datos){
+  GetUsers(){
+    usr=0;
   }
-  String GetEmail(String datos){
-  }
-  String GetUsername(String datos){
-  }
-  String GetDominio(String datos){
-  }*/
-  String GetDat(int num_usr){
-    System.out.println("\nIngrese el nombre completo y correo electronico");
+
+  String GetDat(){
+
     char dts;
     String datos = new String("");
-    for(int aux=1;aux<=num_usr;aux++){
-      try{while((dts=(char)System.in.read()) != '\n')
+    try{
+      while((dts=(char)System.in.read()) != '>')
         datos = datos + dts;
-      }catch(java.io.IOException ioex){
+    }catch(java.io.IOException ioex){
       }
-    }
     return datos;
+  }
+
+  void Dividir(String data_in, int cont){
+    System.out.println("----------Usuario" + cont + "----------");
+    nombre = data_in.split("<");
+    System.out.println("Nombre:"+nombre[0].toUpperCase());
+    System.out.println("Email: "+nombre[1]);
+    username = nombre[1].split("@");
+    System.out.println("Username: "+username[0]);
+    System.out.println("Dominio: "+username[1]);
+    System.out.println("------------------------------------\n");
   }
 
   public static void main(String argv[]){
 
-    GetUsers usuarios = new GetUsers();
+    GetUsers pt = new GetUsers();
 
-    System.out.println("Numero de Usuarios a ingresar?");
-    int obtion=0;
+    String datos;
+    int usr=0;
+
+    System.out.println("Numero de usuarios:");
     try{
-      obtion=System.in.read();
-      obtion = Character.getNumericValue(obtion);
+      usr = System.in.read();
     }catch(java.io.IOException ioex){
     }
-    System.out.println(obtion);
-    usuarios.GetDat(obtion);
+    usr = Character.getNumericValue(usr);
 
+    System.out.println("\nIngrese el nombre completo y correo electronico");
+
+    for(int aux=1;aux<=usr;aux++){
+      datos = pt.GetDat();
+      pt.Dividir(datos,aux);
+    }
   }
-
-
-
 }
