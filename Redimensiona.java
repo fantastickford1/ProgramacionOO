@@ -1,3 +1,11 @@
+/*
+Alumnos:
+Carlos Alejandro Zenteno Robles 143382
+Luis Angel Farelo Toledo 143404
+Abner Rubisel Ramirez Guillen 133362
+
+*/
+
 public class Redimensiona{
 
 
